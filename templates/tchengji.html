@@ -1,0 +1,89 @@
+{% extends 'baset.html' %}
+{% load staticfiles %}
+{% block title %}登成绩{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block a5 %}class="active"{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        function t(id) {
+            window.location.href = "/ddchengji/?id="+id
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="main-content">
+            <div class="container-fluid">
+                	<div class="row">
+						<div class="col-sm-8" style="width: 100%">
+							<div class="box" style="padding: 200px 200px 200px 200px">
+								<div class="box-head" style="padding: 20px 0 20px 45%">
+                                    <h2>{{ message }}</h2>
+								</div><!--/.box-head-->
+								<div class="item" style="padding: 0 10px 20px;" >
+									<div class="item-responsive ">
+										<table class="table" >
+											<thead>
+												<tr>
+                                                    <th>课程号</th>
+													<th>课程名</th>
+                                                    <th>教学班号</th>
+													<th>是否等成绩</th>
+													<th>是否完成</th>
+												</tr>
+											</thead><!--/thead-->
+											<tbody>
+                                            {% if wrong == False %}
+                                                {% for one in class_list %}
+												<tr>
+                                                    <td><span id="qingid" class="jilu-4">{{ one.lesson_id}}</span></td>
+													<td><span class="jilu-4">{{ one.lesson_name }}</span></td>
+                                                    <td><span class="jilu-4">{{ one.jclass_id}}</span></td>
+                                                    {% if one.c == False  %}
+                                                        <td >
+                                                        <button onclick="t({{ one.lesson_id}})">录入成绩</button>
+                                                        </td>
+                                                        <td>
+                                                        <span class="jilu-3">未完成</span>
+                                                        </td>
+                                                    {% else  %}
+                                                        <td >
+                                                        <button onclick="t({{ one.lesson_id}})">修改</button>
+                                                        </td>
+                                                        <td>
+                                                        <span class="jilu-2">完成</span>
+                                                        </td>
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor %}
+                                            {% endif %}
+                                            {% if wrong == True %}
+                                                <p>您本学期无课</p>
+                                            {% endif %}
+											</tbody><!--/tbody-->
+										</table><!--/.table-->
+									</div><!--/.table-responsive-->
+								</div><!--/.item-->
+                                <div style="padding: 0 0 0 45%" >
+                                                                 <nav>
+                                    <ul class="pagination">
+                                        <li class="step-links">
+                                        {% if books.has_previous %}
+                                            <a class='active' href="?page={{ jilu.previous_page_number }}">上一页</a>
+                                        {% endif %}
+
+                                        <span class="current">
+                                            Page {{ jilu.number }} of {{ jilu.paginator.num_pages }}</span>
+
+                                        {% if jilu.has_next %}
+                                            <a class='active' href="?page={{ jilu.next_page_number }}">下一页</a>
+                                        {% endif %}
+                                        </li></ul></nav></div>
+                                </div>
+							</div><!--/.box-->
+						</div><!--/.col-->
+					</div><!--/.row-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

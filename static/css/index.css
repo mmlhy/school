@@ -1,0 +1,49 @@
+.comform{
+    top: 40px;
+    left: 350px;
+    width: 50%;
+    float: left;
+    position: relative;
+    display: inline;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #676a6d;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+}
+
+.com-1{
+    position: relative;
+    left: 20px;
+    padding: 40px 0 40px 40px;
+}
+.com-2{
+    position: relative;
+    left: 250px;
+    padding: 40px 0 40px 40px;
+}
+.com-1-1{
+    padding: 10px 20px 10px 20px;
+}
+.td-1{
+    color: black;font-size: 18px;
+}
+.jilu-1{
+    color: #eb9316;
+    font-size: 18px;
+}
+
+.jilu-2{
+    color: #4cae4c;
+    font-size: 18px;
+}
+.jilu-3{
+    color: #d90003;
+    font-size: 18px;
+}
+.jilu-4{
+    font-size: 14px;
+}

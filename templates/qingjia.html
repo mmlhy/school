@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}请假{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block a4 %}class="active"{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="main-content">
+            <div >
+                <div class="row">
+                    <div class="comform">
+                        <div class="profile-state" style="padding: 100px 50px 100px 50px;">
+                            <div class="icon-box" style="display: inline; padding: 40px 0 40px 40%">
+                                <span style=" font-size: large">请假信息</span>
+                                <form action="/qingjia/" method="post" style="padding: 30px 0 100px 22%;border: #2aabd2 solid thin">
+                                    {% csrf_token %}
+                                    <div class="com-1-1">
+                                        <label>请假开始日期:</label>
+                                        <input type="date" name="startdate" value="2019-09-01" style="width:200px;">
+                                    </div>
+                                    <div class="com-1-1">
+                                        <label >请假开始时间:</label>
+                                        <input type="time"  name="starttime" value="00:00" style="width:200px;">
+                                    </div>
+                                     <div class="com-1-1">
+                                        <label>请假结束日期:</label>
+                                        <input type="date" name="enddate" value="2019-09-01" style="width:200px;">
+                                    </div>
+                                    <div class="com-1-1">
+                                        <label >请假结束时间:</label>
+                                        <input type="time"  name="endtime" value="00:00" style="width:200px;">
+                                    </div>
+                                    <div class="com-1-1">
+                                        <div><label>原因:</label><div>
+                                        <textarea name="cause" style="width:400px;height:150px;" onfocus="this.value=''; this.onfocus=null;">这里写内容：</textarea>
+                                    </div>
+                                    <div style="padding:10px 20px 10px 150px;">
+                                      <button type="submit">提交</button>
+                                    </div>
+                                </form>
+                            </div><!--/.icon-box-->
+                        </div><!--/.profile-state-->
+                    </div><!--/.col-->
+                </div><!--/.row-->
+            </div><!--/.profile-content-->
+        </div>
+    </div>
+{% endblock %}

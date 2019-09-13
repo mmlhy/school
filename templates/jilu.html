@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}请假{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block a5 %}class="active"{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        function q(qid) {
+            var result = confirm("确定消假吗？")
+            if(result){
+                  $("#gai").html("<span class=\"jilu-2\">已消</span>");
+                  $.ajax({
+                      data: {
+                          xiao:1,
+                          qb:qid,
+                      },
+                      type:'POST',
+                      success:function () {
+                          alert("成功！")
+                      },
+                      error:function () {
+                          alert("失败！")
+                      }
+                  })
+            }
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="main-content">
+            <div class="container-fluid">
+                	<div class="row">
+						<div class="col-sm-8" style="width: 100%">
+							<div class="box" style="padding: 200px 200px 200px 200px">
+								<div class="box-head" style="padding: 20px 0 20px 50%">
+                                    <h2>{{ message }}</h2>
+								</div><!--/.box-head-->
+								<div class="item" style="padding: 0 10px 20px;" >
+									<div class="item-responsive ">
+										<table class="table" >
+											<thead>
+												<tr>
+													<th>学号</th>
+                                                    <th>姓名</th>
+													<th>开始时间</th>
+													<th>结束时间</th>
+													<th>原因</th>
+													<th>状态</th>
+													<th>消假</th>
+												</tr>
+											</thead><!--/thead-->
+											<tbody>
+                                                {% for one in jilu %}
+												<tr>
+													<td><span class="jilu-4">{{ one.studentid }}</span></td>
+                                                    <td><span class="jilu-4">{{ one.name}}</span></td>
+													<td><span class="jilu-4">{{ one.starttime }}</span></td>
+													<td><span class="jilu-4">{{ one.endtime }}</span></td>
+													<td><span class="jilu-4">{{ one.cause }}</span></td>
+                                                    {% if one.zhuangtai == "待审"  %}
+                                                        <td><span class="jilu-1">{{ one.zhuangtai }}</span></td>
+                                                    {% elif one.zhuangtai == "同意" %}
+                                                        <td><span class="jilu-2">{{ one.zhuangtai }}</span></td>
+                                                    {% elif one.zhuangtai == "不同意" %}
+                                                        <td><span class="jilu-3">{{ one.zhuangtai }}</span></td>
+                                                    {% endif %}
+                                                    {% if one.is_xiao == "是" and one.zhuangtai == "同意" %}
+                                                        <td><span class="jilu-2">已消</span></td>
+                                                    {% elif one.is_xiao == "否" and one.zhuangtai == "同意"%}
+                                                        <td id="gai"><button onclick="q({{ one.qingid }})">点击消假</button></td>
+                                                    {% else %}
+                                                        <td><span class="jilu-2"></span></td>
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor %}
+											</tbody><!--/tbody-->
+										</table><!--/.table-->
+									</div><!--/.table-responsive-->
+								</div><!--/.item-->
+                                <div style="padding: 0 0 0 45%" >
+                                                                 <nav>
+                                    <ul class="pagination">
+                                        <li class="step-links">
+                                        {% if books.has_previous %}
+                                            <a class='active' href="?page={{ jilu.previous_page_number }}">上一页</a>
+                                        {% endif %}
+
+                                        <span class="current">
+                                            Page {{ jilu.number }} of {{ jilu.paginator.num_pages }}</span>
+
+                                        {% if jilu.has_next %}
+                                            <a class='active' href="?page={{ jilu.next_page_number }}">下一页</a>
+                                        {% endif %}
+                                        </li></ul></nav></div>
+                                </div>
+							</div><!--/.box-->
+						</div><!--/.col-->
+					</div><!--/.row-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

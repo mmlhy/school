@@ -1,0 +1,121 @@
+{% extends 'baset.html' %}
+{% load staticfiles %}
+{% block title %}课堂状态{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block a3 %}class="active"{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        function q(qid) {
+            var result = confirm("确定消假吗？")
+            if(result){
+                  $("#gai").html("<span class=\"jilu-2\">已消</span>");
+                  $.ajax({
+                      data: {
+                          xiao:1,
+                          qb:qid,
+                      },
+                      type:'POST',
+                      success:function () {
+                          alert("成功！")
+                      },
+                      error:function () {
+                          alert("失败！")
+                      }
+                  })
+            }
+        }
+        function t(qid) {
+            $("#gai").html("<span class=\"jilu-2\">已同意</span>");
+              $.ajax({
+                  data: {
+                      tong:'同意',
+                      qb:qid,
+                  },
+                  type:'POST',
+                  success:function () {
+                      alert("成功！")
+                  },
+                  error:function () {
+                      alert("失败！")
+                  }
+              })
+        }
+        function b(qid) {
+            $("#gai").html("<span class=\"jilu-3\">不同意</span>");
+              $.ajax({
+                  data: {
+                      tong:'不同意',
+                      qb:qid,
+                  },
+                  type:'POST',
+                  success:function () {
+                      alert("成功！")
+                  },
+                  error:function () {
+                      alert("失败！")
+                  }
+              })
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="main-content">
+            <div class="container-fluid">
+                	<div class="row">
+						<div class="col-sm-8" style="width: 100%">
+							<div class="box" style="padding: 200px 200px 200px 200px">
+								<div class="box-head" style="padding: 20px 0 20px 50%">
+                                    <h2>{{ message }}</h2>
+								</div><!--/.box-head-->
+                                {% if biaoji == '暂时没课' %}
+                                    <span style="font-size: large;padding: 0 0 0 50% "> {{ biaoji }}</span>
+                                {% else %}
+								<div class="item" style="padding: 0 10px 20px;" >
+									<div class="item-responsive ">
+										<table class="table" >
+											<thead>
+												<tr>
+                                                    <th>学号</th>
+													<th>姓名</th>
+                                                    <th>班级</th>
+                                                    <th>状态</th>
+												</tr>
+											</thead><!--/thead-->
+											<tbody>
+                                                {% for one in biao %}
+												<tr>
+                                                    <td><span class="jilu-4">{{ one.studentid}}</span></td>
+													<td><span class="jilu-4">{{ one.name }}</span></td>
+                                                    <td><span class="jilu-4">{{ one.xclass}}</span></td>
+													<td><span class="jilu-4">{{ one.zhuangtai }}</span></td>
+                                                </tr>
+                                                {% endfor %}
+											</tbody><!--/tbody-->
+										</table><!--/.table-->
+									</div><!--/.table-responsive-->
+								</div><!--/.item-->
+                                <div style="padding: 0 0 0 45%" >
+                                                                 <nav>
+                                    <ul class="pagination">
+                                        <li class="step-links">
+                                        {% if books.has_previous %}
+                                            <a class='active' href="?page={{ jilu.previous_page_number }}">上一页</a>
+                                        {% endif %}
+
+                                        <span class="current">
+                                            Page {{ jilu.number }} of {{ jilu.paginator.num_pages }}</span>
+
+                                        {% if jilu.has_next %}
+                                            <a class='active' href="?page={{ jilu.next_page_number }}">下一页</a>
+                                        {% endif %}
+                                        </li></ul></nav></div>
+                                </div>
+                                {% endif %}
+							</div><!--/.box-->
+						</div><!--/.col-->
+					</div><!--/.row-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,261 @@
+{% extends 'baset.html' %}
+{% load staticfiles %}
+{% block title %}课表{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        function q() {
+            var zhou = parseInt($("#zhou").text());
+            if (zhou == 1){
+                alert("第一周了,亲！")
+            }
+            else {
+               zhou = zhou - 1;
+                window.location.href="?z="+zhou;
+            }
+
+        }
+        function n() {
+            var zhou = parseInt($("#zhou").text());
+            if (zhou == 25){
+                alert("最后一周了,亲！")
+            }
+            else {
+               zhou = zhou + 1;
+                window.location.href="?z="+zhou;
+            }
+        }
+    </script>
+{% endblock %}
+{% block a2 %}class="active"{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="main-content">
+            <div class="container-fluid">
+                	<div class="row">
+						<div class="col-sm-8" style="width: 100%">
+							<div class="box" style="padding: 200px 200px 200px 200px">
+								<div class="box-head" style="padding: 20px 0 20px 50%">
+                                    <h2>第 </h2><h2 id="zhou">{{ zhou }}</h2><h2> 周课表</h2>
+								</div><!--/.box-head-->
+								<div class="item">
+									<div class="item-responsive ">
+										<table class="table">
+											<thead>
+												<tr>
+                                                    <th>时间</th>
+													<th>星期一</th>
+													<th>星期二</th>
+													<th>星期三</th>
+													<th>星期四</th>
+													<th>星期五</th>
+													<th>星期六</th>
+                                                    <th>星期日</th>
+												</tr>
+											</thead><!--/thead-->
+											<tbody>
+												<tr>
+                                                    <td style="color: black;font-size: 18px;"><span>8:20--10:00</span></td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 1_1_lesson_name }}</h5>
+                                                        <h5>{{ 1_1_teacher_name }}</h5>
+                                                        <h5>{{ 1_1_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 2_1_lesson_name }}</h5>
+                                                        <h5>{{ 2_1_teacher_name }}</h5>
+                                                        <h5>{{ 2_1_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 3_1_lesson_name }}</h5>
+                                                        <h5>{{ 3_1_teacher_name }}</h5>
+                                                        <h5>{{ 3_1_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 4_1_lesson_name }}</h5>
+                                                        <h5>{{ 4_1_teacher_name }}</h5>
+                                                        <h5>{{ 4_1_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 5_1_lesson_name }}</h5>
+                                                        <h5>{{ 5_1_teacher_name }}</h5>
+                                                        <h5>{{ 5_1_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 6_1_lesson_name }}</h5>
+                                                        <h5>{{ 6_1_teacher_name }}</h5>
+                                                        <h5>{{ 6_1_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 7_1_lesson_name }}</h5>
+                                                        <h5>{{ 7_1_teacher_name }}</h5>
+                                                        <h5>{{ 7_1_class_wei }}</h5>
+                                                    </td>
+												</tr>
+												<tr>
+                                                    <td style="color: black;font-size: 18px;"><span>10:20--12:00</span></td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 1_2_lesson_name }}</h5>
+                                                        <h5>{{ 1_2_teacher_name }}</h5>
+                                                        <h5>{{ 1_2_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 2_2_lesson_name }}</h5>
+                                                        <h5>{{ 2_2_teacher_name }}</h5>
+                                                        <h5>{{ 2_2_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 3_2_lesson_name }}</h5>
+                                                        <h5>{{ 3_2_teacher_name }}</h5>
+                                                        <h5>{{ 3_2_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 4_2_lesson_name }}</h5>
+                                                        <h5>{{ 4_2_teacher_name }}</h5>
+                                                        <h5>{{ 4_2_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 5_2_lesson_name }}</h5>
+                                                        <h5>{{ 5_2_teacher_name }}</h5>
+                                                        <h5>{{ 5_2_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 6_2_lesson_name }}</h5>
+                                                        <h5>{{ 6_2_teacher_name }}</h5>
+                                                        <h5>{{ 6_2_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 7_2_lesson_name }}</h5>
+                                                        <h5>{{ 7_2_teacher_name }}</h5>
+                                                        <h5>{{ 7_2_class_wei }}</h5>
+                                                    </td>
+												</tr>
+												<tr>
+                                                    <td style="color: black;font-size: 18px;"><span>14:00--15:40</span></td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 1_3_lesson_name }}</h5>
+                                                        <h5>{{ 1_3_teacher_name }}</h5>
+                                                        <h5>{{ 1_3_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 2_3_lesson_name }}</h5>
+                                                        <h5>{{ 2_3_teacher_name }}</h5>
+                                                        <h5>{{ 2_3_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 3_3_lesson_name }}</h5>
+                                                        <h5>{{ 3_3_teacher_name }}</h5>
+                                                        <h5>{{ 3_3_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 4_3_lesson_name }}</h5>
+                                                        <h5>{{ 4_3_teacher_name }}</h5>
+                                                        <h5>{{ 4_3_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 5_3_lesson_name }}</h5>
+                                                        <h5>{{ 5_3_teacher_name }}</h5>
+                                                        <h5>{{ 5_3_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 6_3_lesson_name }}</h5>
+                                                        <h5>{{ 6_3_teacher_name }}</h5>
+                                                        <h5>{{ 6_3_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 7_3_lesson_name }}</h5>
+                                                        <h5>{{ 7_3_teacher_name }}</h5>
+                                                        <h5>{{ 7_3_class_wei }}</h5>
+                                                    </td>
+												</tr>
+												<tr>
+                                                    <td style="color: black;font-size: 18px;"><span>16:00--17:40</span></td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 1_4_lesson_name }}</h5>
+                                                        <h5>{{ 1_4_teacher_name }}</h5>
+                                                        <h5>{{ 1_4_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 2_4_lesson_name }}</h5>
+                                                        <h5>{{ 2_4_teacher_name }}</h5>
+                                                        <h5>{{ 2_4_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 3_4_lesson_name }}</h5>
+                                                        <h5>{{ 3_4_teacher_name }}</h5>
+                                                        <h5>{{ 3_4_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 4_4_lesson_name }}</h5>
+                                                        <h5>{{ 4_4_teacher_name }}</h5>
+                                                        <h5>{{ 4_4_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 5_4_lesson_name }}</h5>
+                                                        <h5>{{ 5_4_teacher_name }}</h5>
+                                                        <h5>{{ 5_4_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 6_4_lesson_name }}</h5>
+                                                        <h5>{{ 6_4_teacher_name }}</h5>
+                                                        <h5>{{ 6_4_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 7_4_lesson_name }}</h5>
+                                                        <h5>{{ 7_4_teacher_name }}</h5>
+                                                        <h5>{{ 7_4_class_wei }}</h5>
+                                                    </td>
+												</tr>
+												<tr>
+                                                    <td style="color: black;font-size: 18px;"><span>19:30--21:10</span></td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 1_5_lesson_name }}</h5>
+                                                        <h5>{{ 1_5_teacher_name }}</h5>
+                                                        <h5>{{ 1_5_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 2_5_lesson_name }}</h5>
+                                                        <h5>{{ 2_5_teacher_name }}</h5>
+                                                        <h5>{{ 2_5_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 3_5_lesson_name }}</h5>
+                                                        <h5>{{ 3_5_teacher_name }}</h5>
+                                                        <h5>{{ 3_5_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 4_5_lesson_name }}</h5>
+                                                        <h5>{{ 4_5_teacher_name }}</h5>
+                                                        <h5>{{ 4_5_class_wei }}</h5>
+                                                    </td>
+													<td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 5_5_lesson_name }}</h5>
+                                                        <h5>{{ 5_5_teacher_name }}</h5>
+                                                        <h5>{{ 5_5_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 6_1_lesson_name }}</h5>
+                                                        <h5>{{ 6_1_teacher_name }}</h5>
+                                                        <h5>{{ 6_1_class_wei }}</h5>
+                                                    </td>
+                                                    <td style="color: black;font-size: 18px;">
+                                                        <h5>{{ 7_1_lesson_name }}</h5>
+                                                        <h5>{{ 7_1_teacher_name }}</h5>
+                                                        <h5>{{ 7_1_class_wei }}</h5>
+                                                    </td>
+												</tr>
+											</tbody><!--/tbody-->
+										</table><!--/.table-->
+									</div><!--/.table-responsive-->
+								</div><!--/.item-->
+                                <div style="padding: 0 0 0 45%" >
+                                   <button class="btn btn-info" onclick="q()" >上一周</button> <button class="btn btn-info" onclick="n()">下一周</button>
+                                </div>
+							</div><!--/.box-->
+						</div><!--/.col-->
+					</div><!--/.row-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

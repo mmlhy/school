@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}成绩{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block a2 %}class="active"{% endblock %}
+{% block content %}
+   <div class="main">
+        <div class="main-content">
+            <div >
+                <div class="row">
+                    <div class="comform" style="padding: 40px 0 40px 0">
+                        {% if chengji_list %}
+                            {% for chengji in chengji_list %}
+                            <div class="profile-state">
+                                <div class="icon-box" >
+                                       <h3 class="com-1-1">课程号：{{ chengji.id }}</h3>
+                                        <h3 class="com-1-1">课程名：{{ chengji.l_name }}</h3>
+                                        <h3 class="com-1-1">教师姓名：{{ chengji.t_name }}</h3>
+                                        <h3 class="com-1-1">成绩：{{ chengji.grade }}</h3>
+                                </div><!--/.icon-box-->
+                            </div><!--/.profile-state-->
+                            {% endfor %}
+                        {% else %}
+                        <div class="profile-state" style="padding: 20px 0 10px 20px">
+                            <div class="icon-box" >
+                                   <h2>暂无成绩可查询</h2>
+                            </div><!--/.icon-box-->
+                        </div><!--/.profile-state-->
+                        {% endif %}
+                    </div><!--/.col-->
+                </div><!--/.row-->
+            </div><!--/.profile-content-->
+        </div>
+    </div>
+{% endblock %}

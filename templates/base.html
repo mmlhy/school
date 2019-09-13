@@ -1,0 +1,156 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- TITLE OF SITE -->
+        <title>{% block title %}base{% endblock %}</title>
+
+        <!-- favicon -->
+		<!--<link rel="shortcat icon" href="/favicon.ico" type="image/x-icon">-->
+
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+		<!--chartist.min.css-->
+        <link rel="stylesheet" href="/static/assets/chartist/css/chartist.min.css">
+
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+
+        <!--style.css-->
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+
+        <!--responsive.css-->
+        <link rel="stylesheet" href="/static/assets/css/responsive.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+        <![endif]-->
+        {% block css %}{% endblock %}
+        {% block js %}{% endblock %}
+
+    </head>
+
+    <body>
+
+    	<!-- wrapper -->
+	<div id="wrapper">
+
+		<!-- navbar -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand" style="width: 200px">
+				<a href="/index/">
+					教务<span>系统</span>
+				</a>
+			</div><!--/.brand -->
+			<div class="container-fluid">
+				<div class="navbar-menu" >
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="/login/1/" class="dropdown-toggle">
+								<span style="font-size: 20px">退出</span>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="/index/" class="dropdown-toggle">
+                                <span style="font-size: 20px;color: #d70206">欢迎：</span>
+                                <span style="font-size: 20px">{{ request.session.user_name }}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div><!--/.container-fluid -->
+
+		</nav><!--/nav -->
+		<!-- END NAVBAR -->
+
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+
+						<li {% block a1 %}{% endblock %}>
+							<a href="/index/" >
+								<i data-feather="home"></i> <span>个人信息</span>
+							</a>
+						</li>
+
+						<li {% block a2 %}{% endblock %}>
+							<a href="/schengji/">
+								<i data-feather="package"></i> <span>成绩查询</span>
+							</a>
+						</li>
+
+						<li {% block a3 %}{% endblock %}>
+							<a href="/kebiao/">
+								<i data-feather="file-text"></i> <span>课表</span>
+							</a>
+						</li >
+
+						<li {% block a4 %}{% endblock %}>
+							<a href="/qingjia/">
+								<i data-feather="grid"></i> <span>请假</span>
+							</a>
+						</li>
+
+						<li {% block a5 %}{% endblock %}>
+							<a href="/jilu/">
+								<i data-feather="map"></i> <span>请假记录</span>
+							</a>
+						</li>
+                    </ul>
+				</nav>
+			</div>
+
+		</div>
+        {% block content %}{% endblock %}
+
+
+
+
+	</div>
+	<!-- END WRAPPER -->
+
+
+        <!--jquery-1.12.4.min.js-->
+        <script  src="/static/assets/js/jquery.min.js"></script>
+
+		<!--chartist.min.js-->
+        <script src="/static/assets/chartist/js/chartist.min.js"></script>
+        <script src="/static/assets/chartist/js/chartist-tooltip-plugin.js"></script>
+        <script src="/static/assets/chartist/js/chartist-custom.js"></script>
+
+        <!--bootstrap.min.js-->
+        <script src="/static/assets/js/bootstrap.min.js"></script>
+
+		<!--jquery.slimscroll.min.js-->
+        <script src="/static/assets/js/jquery.slimscroll.min.js"></script>
+
+		<!--feather.min.js-->
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+		<!-- DataMaps Plugin Js -->
+        <script src="/static/assets/js/d3.min.js"></script>
+        <script src="/static/assets/js/topojson.js"></script>
+        <script src="/static/assets/js/datamaps.world.min.js"></script>
+
+        <!--fontawesome-all.min.js-->
+        <script src="/static/assets/js/fontawesome-all.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="/static/assets/js/custom.js"></script>
+        {% block ext %}{% endblock %}
+    </body>
+</html>

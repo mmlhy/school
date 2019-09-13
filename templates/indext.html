@@ -1,0 +1,43 @@
+{% extends 'baset.html' %}
+{% load staticfiles %}
+{% block title %}首页{% endblock %}
+{% block css %}<link href="{% static 'css/index.css' %}" rel="stylesheet"/>{% endblock %}
+{% block a1 %}class="active"{% endblock %}
+{% block content %}
+    <div class="main">
+        <div class="main-content">
+            <div >
+                <div class="row">
+                    <div class="comform">
+                        <div class="profile-state" style="padding: 100px 50px 100px 50px;">
+                            <div class="icon-box" >
+                                <div class="com-1">
+                                   <h3>教师号：{{ userid }}</h3>
+                                </div>
+                                <div class="com-2">
+                                    <h3>姓名：{{ username }}</h3>
+                                </div>
+                            </div><!--/.icon-box-->
+                            <div class="icon-box" >
+                                <div class="com-1">
+                                   <h3>性别：{{ sex }}</h3>
+                                </div>
+                                <div class="com-2">
+                                    <h3>身份证号：{{ perid }}</h3>
+                                </div>
+                            </div><!--/.icon-box-->
+                            <div class="icon-box" >
+                                <div class="com-1">
+                                   <h3>系别：{{ xiname }}</h3>
+                                </div>
+                                <div class="com-2" style="left: 140px">
+                                    <h3>职称:{{ zhicheng }}</h3>
+                                </div>
+                            </div><!--/.icon-box-->
+                        </div><!--/.profile-state-->
+                    </div><!--/.col-->
+                </div><!--/.row-->
+            </div><!--/.profile-content-->
+        </div>
+    </div>
+{% endblock %}
